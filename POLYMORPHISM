@@ -1,0 +1,50 @@
+package smt2;
+public class Kendaraan { // Kelas induk (Superclass)
+    // Metode bergerak() di dalam superclass yang akan diwarisi oleh semua subclass
+    void bergerak() {
+        System.out.println("Kendaraan sedang bergerak...");
+    }
+}
+
+// Kelas Mobil yang merupakan subclass dari Kendaraan
+class Mobil extends Kendaraan {
+    // Override metode bergerak() untuk memberikan implementasi khusus untuk Mobil
+    @Override
+    void bergerak() {
+        System.out.println("Mobil bergerak dengan roda di jalan.");
+    }
+}
+
+// Kelas Kapal yang merupakan subclass dari Kendaraan
+class Kapal extends Kendaraan {
+    // Override metode bergerak() untuk memberikan implementasi khusus untuk Kapal
+    @Override
+    void bergerak() {
+        System.out.println("Kapal bergerak di atas air.");
+    }
+}
+
+// Kelas Pesawat yang merupakan subclass dari Kendaraan
+class Pesawat extends Kendaraan {
+    // Override metode bergerak() untuk memberikan implementasi khusus untuk Pesawat
+    @Override
+    void bergerak() {
+        System.out.println("Pesawat terbang di udara.");
+    }
+}
+
+// Kelas utama untuk menguji konsep polimorfisme
+class Polimorfisme {
+    public static void main(String[] args) {
+        // Membuat objek dari subclass dengan referensi superclass (Polimorfisme)
+        Kendaraan kendaraan1 = new Mobil();   // Objek Mobil
+        Kendaraan kendaraan2 = new Kapal();   // Objek Kapal
+        Kendaraan kendaraan3 = new Pesawat(); // Objek Pesawat
+
+        // Memanggil metode bergerak() dari masing-masing objek
+        // Meskipun tipe datanya adalah Kendaraan, yang dipanggil adalah metode dari objek aslinya (polimorfisme)
+        kendaraan1.bergerak(); // Output: Mobil bergerak dengan roda di jalan.
+        kendaraan2.bergerak(); // Output: Kapal bergerak di atas air.
+        kendaraan3.bergerak(); // Output: Pesawat terbang di udara.
+    }
+}  
