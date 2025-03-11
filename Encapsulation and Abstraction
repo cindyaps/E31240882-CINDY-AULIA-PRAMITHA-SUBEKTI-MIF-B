@@ -1,0 +1,72 @@
+package smt2;
+public abstract class Shape {
+  // Kelas abstrak Shape sebagai superclass
+    protected String color; // Atribut warna
+
+    // Konstruktor untuk menginisialisasi warna
+    public Shape(String color) {
+        this.color = color;
+    }
+
+    // Metode abstrak untuk menghitung luas (harus diimplementasikan oleh subclass)
+    public abstract double getArea();
+
+    // Metode untuk mendapatkan warna bentuk
+    public String getColor() {
+        return color;
+    }
+}
+
+// Kelas Triangle (Segitiga) sebagai subclass dari Shape
+class Triangle extends Shape {
+    private double base;  // Atribut alas segitiga
+    private double height; // Atribut tinggi segitiga
+
+    // Konstruktor untuk menginisialisasi alas, tinggi, dan warna
+    public Triangle(String color, double base, double height) {
+        super(color); // Memanggil konstruktor superclass
+        this.base = base;
+        this.height = height;
+    }
+
+    // Implementasi metode getArea() untuk menghitung luas segitiga
+    @Override
+    public double getArea() {
+        return 0.5 * base * height;
+    }
+}
+
+// Kelas Circle (Lingkaran) sebagai subclass dari Shape
+class Circle extends Shape {
+    private double radius; // Atribut jari-jari lingkaran
+
+    // Konstruktor untuk menginisialisasi radius dan warna
+    public Circle(String color, double radius) {
+        super(color); // Memanggil konstruktor superclass
+        this.radius = radius;
+    }
+
+    // Implementasi metode getArea() untuk menghitung luas lingkaran
+    @Override
+    public double getArea() {
+        return Math.PI * Math.pow(radius, 2);
+    }
+}
+
+// Kelas utama untuk menjalankan program
+class Main {
+    public static void main(String[] args) {
+        // Membuat array dari objek Shape untuk mendemonstrasikan polimorfisme
+        Shape[] shapes = new Shape[2];
+        shapes[0] = new Triangle("Biru", 8, 4); // Objek segitiga
+        shapes[1] = new Circle("", 6); // Objek lingkaran
+
+        // Looping untuk menampilkan detail setiap objek
+        for (Shape shape : shapes) {
+            System.out.println("Bentuk: " + shape.getClass().getSimpleName());
+            System.out.println("Warna: " + shape.getColor());
+            System.out.println("Luas: " + shape.getArea());
+            System.out.println("----------------------");
+        }
+    }
+}  
